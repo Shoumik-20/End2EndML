@@ -2,5 +2,5 @@ pandas
 numpy
 seaborn
 matplotlib
-sklearn
-# -e .
+scikit-learn
+# -e .          # If commented out. It is commented out since we don't want to build the package everytime, just at the end.
