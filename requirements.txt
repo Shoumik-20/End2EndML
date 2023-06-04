@@ -6,4 +6,5 @@ scikit-learn
 catboost==1.1.1
 xgboost
 dill
+Flask
 # -e .          # If commented out. It is commented out since we don't want to build the package everytime, just at the end.
