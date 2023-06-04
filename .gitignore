@@ -21,6 +21,7 @@ sdist/
 var/
 wheels/
 /artifacts
+/catboost_info/
 share/python-wheels/
 *.egg-info/
 .installed.cfg
