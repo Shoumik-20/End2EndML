@@ -40,17 +40,48 @@ class ModelTrainer:
             )
 
             models={
-                "Random Forest": RandomForestRegressor(),
                 "Decision Tree": DecisionTreeRegressor(),
+                "Random Forest": RandomForestRegressor(),
                 "Gradient Boosting": GradientBoostingRegressor(),
                 "Linear Regression": LinearRegression(),
-                "K-Neigbors Classifier": KNeighborsRegressor(),
+                "K-Neighbors Classifier": KNeighborsRegressor(),
                 "XGBClassifier": XGBRegressor(),
                 "CatBoosting Classifier": CatBoostRegressor(verbose=False),
                 "AdaBoost Classifier": AdaBoostRegressor()
             }
 
-            model_report:dict = evaluate_model(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, models=models)
+            params={
+                "Decision Tree":{
+                    'criterion':['squared_error', "absolute_error"],
+                },
+                "Random Forest":{
+                    'n_estimators':[8,16,32,64,128,256],
+                },
+                "Gradient Boosting":{
+                    'learning_rate':[.1,.01,.05,.001],
+                    'subsample':[0.6,0.7,0.8,0.9],
+                    'n_estimators':[8,16,32,64,128,256],
+                },
+                "Linear Regression":{},
+                "K-Neighbors Classifier":{
+                    'n_neighbors':[5,7,9,11],
+                },
+                "XGBClassifier":{
+                    'learning_rate':[0.01, 0.05, 0.1]
+                },
+                "CatBoosting Classifier":{
+                    'depth':[6,8,10],
+                    'learning_rate':[0.01,0.05,0.1],
+                    'iterations':[30, 50, 100]
+                },
+                "AdaBoost Classifier":{
+                    'learning_rate':[0.01,0.05,0.1],
+                    'n_estimators':[8,16,32,64,128,256]
+                }
+
+            }
+    
+            model_report:dict = evaluate_model(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, models=models, param=params)
 
             logging.info("Model Report : {}".format(model_report))
 
