@@ -3,7 +3,7 @@ import sys
 from dataclasses import dataclass
 from tabnanny import verbose
 
-from catboost import CatBoostRegressor
+#from catboost import CatBoostRegressor
 from sklearn.ensemble import (
     AdaBoostRegressor,
     GradientBoostingRegressor,
@@ -46,7 +46,7 @@ class ModelTrainer:
                 "Linear Regression": LinearRegression(),
                 "K-Neighbors Classifier": KNeighborsRegressor(),
                 "XGBClassifier": XGBRegressor(),
-                "CatBoosting Classifier": CatBoostRegressor(verbose=False),
+                #"CatBoosting Classifier": CatBoostRegressor(verbose=False),
                 "AdaBoost Classifier": AdaBoostRegressor()
             }
 
@@ -69,11 +69,11 @@ class ModelTrainer:
                 "XGBClassifier":{
                     'learning_rate':[0.01, 0.05, 0.1]
                 },
-                "CatBoosting Classifier":{
-                    'depth':[6,8,10],
-                    'learning_rate':[0.01,0.05,0.1],
-                    'iterations':[30, 50, 100]
-                },
+                #"CatBoosting Classifier":{
+                 #   'depth':[6,8,10],
+                  #  'learning_rate':[0.01,0.05,0.1],
+                   # 'iterations':[30, 50, 100]
+                #},
                 "AdaBoost Classifier":{
                     'learning_rate':[0.01,0.05,0.1],
                     'n_estimators':[8,16,32,64,128,256]
